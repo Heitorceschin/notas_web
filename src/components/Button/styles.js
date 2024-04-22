@@ -14,9 +14,4 @@ export const Container = styled.button`
 
     &:disabled{
         opacity: 0.5;
-        
-    }
-    
-   
-   
-   `;
+    } `;

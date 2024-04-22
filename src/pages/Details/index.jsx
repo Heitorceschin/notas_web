@@ -2,7 +2,7 @@ import { Container, Links, Content} from "./styles.js"
 
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
-import { ButtonText } from "../../components/ButtonText/Index.jsx"
+import { ButtonText } from "../../components/ButtonText"
 import { Section } from "../../components/Section"
 import { Tag } from "../../Tag/index.jsx"
 
