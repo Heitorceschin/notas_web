@@ -4,7 +4,7 @@ import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
 import { ButtonText } from "../../components/ButtonText"
 import { Section } from "../../components/Section"
-import { Tag } from "../../Tag/index.jsx"
+import { Tag } from "../../components/Tag"
 
 
 
