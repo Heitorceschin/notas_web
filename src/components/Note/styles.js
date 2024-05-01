@@ -1,14 +1,17 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-export const Container = styled.button`
+export const Container = styled(Link)`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+  text-decoration: none;
 
   border: none;
   border-radius: 10px;
 
   padding: 22px;
   margin-bottom: 16px;
+   display: block;
 
   > h1 {
     flex: 1;

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
@@ -51,9 +51,8 @@ export const Search = styled.div`
 `
 export const Content = styled.div`
   grid-area: content;
-  padding: 0 64px ;
-  overflow-y: scroll;
-
+  padding: 0 64px;
+  overflow-y: auto;
 `
 export const NewNote = styled(Link)`
   grid-area: newnote;
