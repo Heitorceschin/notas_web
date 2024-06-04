@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { FiMail, FiLock, FiUser } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { api } from "../../service/api"
 
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
@@ -9,41 +11,72 @@ import { Container, Form, Background } from "./styles";
 
 
 export function SignUp() {
-    return (
-        <Container>
-            <Background/>
-            <Form>
-                <h1>Rocket Notes</h1>
-                <p>Aplicação ára salvar e gerenciar seus links úteis </p>
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-                <h2>Crie sua conta</h2>
+    const navigate = useNavigate()
 
-                <Input
-                    placeholder="Nome"
-                    type="text"
-                    icon={FiUser}
+    function handleSignUp() {
+        if (!name || !email || !password) {
+            return alert("Preencha todos os campos")
+        }
 
-                />
-                <Input
-                    placeholder="E-mail"
-                    type="text"
-                    icon={FiMail}
+        api.post("/users", { name, email, password })
+            .then(() => {
+                alert("Usuario cadastrado com sucesso!")
+                navigate("/")
+            })
+            .catch(error => {
+                if (error.response) {
+                    alert(error.response.data.message)
+                } else {
+                    alert("Nao foi possivel cadastrar");
+            }
+        })
 
-                />
-                <Input
-                    placeholder="Senha"
-                    type="password"
-                    icon={FiLock}
+    }
+    
+    {
+        return (
+            <Container>
+                <Background />
+                <Form>
+                    <h1>Rocket Notes</h1>
+                    <p>Aplicação ára salvar e gerenciar seus links úteis </p>
 
-                />
+                    <h2>Crie sua conta</h2>
 
-                <Button title="Cadastrar"/>
+                    <Input
+                        placeholder="Nome"
+                        type="text"
+                        icon={FiUser}
+                        onChange={e => setName(e.target.value)}
 
-                <Link to="/">Voltar para o login</Link>
+                    />
+                    <Input
+                        placeholder="E-mail"
+                        type="text"
+                        icon={FiMail}
+                        onChange={e => setEmail(e.target.value)}
 
-            </Form>
+                    />
+                    <Input
+                        placeholder="Senha"
+                        type="password"
+                        icon={FiLock}
+                        onChange={e => setPassword(e.target.value)}
+                    
+                    />
+
+                    <Button title="Cadastrar" onClick={handleSignUp} />
+
+                    <Link to="/">Voltar para o login</Link>
+
+                </Form>
 
             
-        </Container>
-    )
+            </Container>
+        )
+    }
 }
