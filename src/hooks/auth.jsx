@@ -31,7 +31,7 @@ function AuthProvider({ children }) {
         alert("Não foi possível entrar.");
       }
     }
-  };
+  }
 
   async function updatedProfile({ user, avatarFile }) {
     try {
@@ -61,7 +61,7 @@ function AuthProvider({ children }) {
         alert("Não foi possível atualizar o perfil.");
       }
     }
-  };
+  }
 
   function signOut() {
     localStorage.removeItem("@rocketnotes:token");
